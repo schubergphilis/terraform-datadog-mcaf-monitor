@@ -2,7 +2,7 @@ locals {
   tags = [for k, v in var.tags : "${k}:${v}"]
 }
 
-resource "datadog_monitor" "kit_health_check_ks" {
+resource "datadog_monitor" "${var.name}" {
   name = var.name
   type = var.type
   message = var.message

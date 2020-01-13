@@ -63,5 +63,3 @@ variable "type" {
   default     = "query alert"
   description = "type of the Datadog monitor"
 }
-
-
