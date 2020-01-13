@@ -3,6 +3,7 @@ variable "include_tags" {
   default     = true
   description = "Indicates whether notifications from this monitor automatically insert its triggering tags into the monitoring title"
 }
+
 variable "message" {
   type        = string
   description = "Message to be send in case of alert"
@@ -42,9 +43,15 @@ variable "renotify_interval" {
   description = "The number of minutes after the last notification before a monitor will re-notify on the current status, 0 means never"
 }
 
-variable "tags" {
+variable "tag_list" {
+  type        = list(string)
+  default     = []
+  description = "A list of tags to assign to the role"
+}
+
+variable "tag_map" {
   type        = map(string)
-  description = "A mapping of tags to assign to the role"
+  description = "A map of tags to assign to the role"
 }
 
 variable "timeout_h" {
