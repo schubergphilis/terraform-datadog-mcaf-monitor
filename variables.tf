@@ -1,46 +1,52 @@
-variable "include_tags" {
-  type        = bool
-  default     = true
-  description = "Indicates whether notifications from this monitor automatically insert its triggering tags into the monitoring title"
-}
-
-variable "message" {
-  type        = string
-  description = "Message to be send in case of alert"
-}
-
 variable "name" {
   type        = string
   description = "Name of the Datadog monitor"
 }
 
+variable "type" {
+  type        = string
+  default     = "query alert"
+  description = "The type of the monitor"
+}
+
+variable "message" {
+  type        = string
+  description = "A message to include with notifications for this monitor"
+}
+
+variable "query" {
+  type        = string
+  description = "The monitor query to notify on"
+}
+
+variable "include_tags" {
+  type        = bool
+  default     = true
+  description = "Whether to insert the triggering tags into the monitoring title"
+}
+
 variable "new_host_delay" {
   type        = number
-  default     = 300
-  description = "Seconds to allow a host to boot and applications to fully start before starting the evaluation of monitor results"
+  default     = null
+  description = "Seconds after booting before starting the evaluation of monitor results"
 }
 
 variable "notify_no_data" {
   type        = bool
   default     = true
-  description = "Indicator whether to alarm if data is missing"
+  description = "Whether this monitor will notify when data stops reporting"
 }
 
 variable "no_data_timeframe" {
   type        = number
-  default     = 20
+  default     = null
   description = "The number of minutes before a monitor will notify when data stops reporting"
-}
-
-variable "query" {
-  type        = string
-  description = "The query used by the monitor"
 }
 
 variable "renotify_interval" {
   type        = number
-  default     = 0
-  description = "The number of minutes after the last notification before a monitor will re-notify on the current status, 0 means never"
+  default     = null
+  description = "The number of minutes before a monitor will re-notify on the current status"
 }
 
 variable "tag_list" {
@@ -51,22 +57,18 @@ variable "tag_list" {
 
 variable "tag_map" {
   type        = map(string)
+  default     = {}
   description = "A map of tags to assign to the role"
 }
 
-variable "timeout_h" {
+variable "timeout" {
   type        = number
-  default     = 0
-  description = "The number of hours of the monitor not reporting data before it will automatically resolve from a triggered state, 0 means never"
+  default     = null
+  description = "Hours of not reporting data before automatically resolving from a triggered state"
 }
 
 variable "thresholds" {
   type        = map(string)
+  default     = null
   description = "A mapping of thresholds for the monitor"
-}
-
-variable "type" {
-  type        = string
-  default     = "query alert"
-  description = "type of the Datadog monitor"
 }
