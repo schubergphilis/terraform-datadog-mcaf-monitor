@@ -1,28 +1,19 @@
-variable "name" {
-  type        = string
-  description = "Name of the Datadog monitor"
-}
-
-variable "type" {
-  type        = string
-  default     = "query alert"
-  description = "The type of the monitor"
-}
-
-variable "message" {
-  type        = string
-  description = "A message to include with notifications for this monitor"
-}
-
-variable "query" {
-  type        = string
-  description = "The monitor query to notify on"
-}
-
 variable "include_tags" {
   type        = bool
   default     = true
   description = "Whether to insert the triggering tags into the monitoring title"
+}
+
+variable "monitors" {
+  type = map(object({
+    message = string
+    name    = string
+    query   = string
+    type    = string
+
+  }))
+  default     = null
+  description = "The set of monitor specific attributes per monitor"
 }
 
 variable "new_host_delay" {
