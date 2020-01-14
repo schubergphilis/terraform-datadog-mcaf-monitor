@@ -1,6 +1,5 @@
 locals {
-  tag_map = [for k, v in var.tag_map : "${k}:${v}"]
-  tags    = concat(var.tag_list, local.tag_map)
+  tags = concat(var.tag_list, [for k, v in var.tag_map : "${k}:${v}"])
 }
 
 resource "datadog_monitor" "monitor" {
