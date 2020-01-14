@@ -6,10 +6,11 @@ variable "include_tags" {
 
 variable "monitors" {
   type = map(object({
-    message = string
-    name    = string
-    query   = string
-    type    = string
+    message   = string
+    name      = string
+    query     = string
+    tresholds = map(string)
+    type      = string
 
   }))
   default     = null
@@ -58,8 +59,3 @@ variable "timeout" {
   description = "Hours of not reporting data before automatically resolving from a triggered state"
 }
 
-variable "thresholds" {
-  type        = map(string)
-  default     = null
-  description = "A mapping of thresholds for the monitor"
-}
