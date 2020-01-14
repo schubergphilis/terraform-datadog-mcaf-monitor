@@ -68,11 +68,7 @@ variable "timeout" {
 }
 
 variable "thresholds" {
-  type = map(string)
-  default = {
-    ok       = 1,
-    warning  = 1,
-    critical = 1
-  }
+  type        = map(string)
+  default     = null
   description = "A mapping of thresholds for the monitor"
 }
