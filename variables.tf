@@ -1,13 +1,13 @@
 variable "dashboard" {
   type        = string
-  default     = null
-  description = "The dashboard url shown in the alert message"
+  default     = ""
+  description = "The Datadog dashboard URL shown in the alert message"
 }
 
 variable "evaluation_delay" {
   type        = number
-  default     = 900
-  description = "Time in seconds to delay evaluation. Ensures that the monitor has a full data period"
+  default     = null
+  description = "Seconds to delay evaluation to ensure the monitor has a full data period"
 }
 
 variable "include_tags" {
@@ -18,12 +18,11 @@ variable "include_tags" {
 
 variable "monitors" {
   type = map(object({
-    message   = string
-    name      = string
-    query     = string
-    tresholds = map(string)
-    type      = string
-
+    name       = string
+    type       = string
+    message    = string
+    query      = string
+    thresholds = map(string)
   }))
   default     = null
   description = "The set of monitor specific attributes per monitor"
@@ -36,8 +35,8 @@ variable "new_host_delay" {
 }
 
 variable "notifiers" {
-  type        = string
-  default     = null
+  type        = list(string)
+  default     = []
   description = "The notifiers to which the alerts get send"
 }
 
@@ -76,4 +75,3 @@ variable "timeout" {
   default     = null
   description = "Hours of not reporting data before automatically resolving from a triggered state"
 }
-
