@@ -2,15 +2,14 @@ locals {
   tags = concat(var.tag_list, [for k, v in var.tag_map : "${k}:${v}"])
 }
 
-resource "datadog_monitor" "monitor" {
+resource "datadog_monitor" "default" {
   for_each = var.monitors
 
-  message   = each.value.message
-  name      = each.value.name
-  query     = each.value.query
-  type      = each.value.type
-  tresholds = each.value.tresholds
-
+  message           = "{{#is_alert}} ${each.value.message} ${var.dashboard} {{/is_alert}} ${var.notifiers}"
+  name              = each.value.name
+  query             = each.value.query
+  type              = each.value.type
+  tresholds         = each.value.tresholds
   include_tags      = var.include_tags
   new_host_delay    = var.new_host_delay
   no_data_timeframe = var.no_data_timeframe

@@ -1,3 +1,15 @@
+variable "dashboard" {
+  type        = string
+  default     = null
+  description = "The dashboard url shown in the alert message"
+}
+
+variable "evaluation_delay" {
+  type        = number
+  default     = 900
+  description = "Time in seconds to delay evaluation. Ensures that the monitor has a full data period"
+}
+
 variable "include_tags" {
   type        = bool
   default     = true
@@ -21,6 +33,12 @@ variable "new_host_delay" {
   type        = number
   default     = null
   description = "Seconds after booting before starting the evaluation of monitor results"
+}
+
+variable "notifiers" {
+  type        = string
+  default     = null
+  description = "The notifiers to which the alerts get send"
 }
 
 variable "notify_no_data" {
