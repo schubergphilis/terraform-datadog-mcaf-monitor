@@ -7,7 +7,6 @@ resource "datadog_monitor" "default" {
   for_each = var.monitors
 
   name              = each.value.name
-  type              = each.value.type
   message           = format(local.message, each.value.message)
   query             = each.value.query
   evaluation_delay  = var.evaluation_delay
@@ -17,6 +16,7 @@ resource "datadog_monitor" "default" {
   notify_no_data    = var.notify_no_data
   renotify_interval = var.renotify_interval
   timeout_h         = var.timeout
-  thresholds         = each.value.thresholds
+  thresholds        = each.value.thresholds
+  type              = each.value.type
   tags              = local.tags
 }
