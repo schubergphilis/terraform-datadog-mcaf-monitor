@@ -17,6 +17,6 @@ resource "datadog_monitor" "default" {
   notify_no_data    = var.notify_no_data
   renotify_interval = var.renotify_interval
   timeout_h         = var.timeout
-  tresholds         = each.value.tresholds
+  thresholds         = each.value.thresholds
   tags              = local.tags
 }
