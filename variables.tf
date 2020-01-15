@@ -1,22 +1,13 @@
-variable "name" {
+variable "dashboard" {
   type        = string
-  description = "Name of the Datadog monitor"
+  default     = ""
+  description = "The Datadog dashboard URL shown in the alert message"
 }
 
-variable "type" {
-  type        = string
-  default     = "query alert"
-  description = "The type of the monitor"
-}
-
-variable "message" {
-  type        = string
-  description = "A message to include with notifications for this monitor"
-}
-
-variable "query" {
-  type        = string
-  description = "The monitor query to notify on"
+variable "evaluation_delay" {
+  type        = number
+  default     = null
+  description = "Seconds to delay evaluation to ensure the monitor has a full data period"
 }
 
 variable "include_tags" {
@@ -25,10 +16,28 @@ variable "include_tags" {
   description = "Whether to insert the triggering tags into the monitoring title"
 }
 
+variable "monitors" {
+  type = map(object({
+    name       = string
+    type       = string
+    message    = string
+    query      = string
+    thresholds = map(string)
+  }))
+  default     = null
+  description = "The set of monitor specific attributes per monitor"
+}
+
 variable "new_host_delay" {
   type        = number
   default     = null
   description = "Seconds after booting before starting the evaluation of monitor results"
+}
+
+variable "notifiers" {
+  type        = list(string)
+  default     = []
+  description = "The notifiers to which the alerts get send"
 }
 
 variable "notify_no_data" {
@@ -65,10 +74,4 @@ variable "timeout" {
   type        = number
   default     = null
   description = "Hours of not reporting data before automatically resolving from a triggered state"
-}
-
-variable "thresholds" {
-  type        = map(string)
-  default     = null
-  description = "A mapping of thresholds for the monitor"
 }
