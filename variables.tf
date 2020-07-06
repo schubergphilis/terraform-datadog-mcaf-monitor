@@ -58,6 +58,12 @@ variable "renotify_interval" {
   description = "The number of minutes before a monitor will re-notify on the current status"
 }
 
+variable "require_full_window" {
+  type        = bool
+  default     = true
+  description = "A boolean indicating whether the monitor needs a full window of data before it's evaluated"
+}
+
 variable "tag_list" {
   type        = list(string)
   default     = []
