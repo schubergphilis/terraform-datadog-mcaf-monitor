@@ -17,7 +17,19 @@ resource "datadog_monitor" "default" {
   renotify_interval   = var.renotify_interval
   require_full_window = var.require_full_window
   timeout_h           = var.timeout
-  thresholds          = each.value.thresholds
   type                = each.value.type
   tags                = local.tags
+
+  dynamic "monitor_thresholds" {
+    for_each = each.value.thresholds != null ? { create : true } : {}
+
+    content {
+      ok                = try(each.value.thresholds["ok"], null)
+      warning           = try(each.value.thresholds["warning"], null)
+      critical          = try(each.value.thresholds["critical"], null)
+      unknown           = try(each.value.thresholds["unknown"], null)
+      warning_recovery  = try(each.value.thresholds["warning_recovery"], null)
+      critical_recovery = try(each.value.thresholds["critical_recovery"], null)
+    }
+  }
 }
