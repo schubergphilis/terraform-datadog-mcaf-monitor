@@ -28,7 +28,7 @@ variable "monitors" {
   description = "The set of monitor specific attributes per monitor"
 }
 
-variable "new_host_delay" {
+variable "new_group_delay" {
   type        = number
   default     = null
   description = "Seconds after booting before starting the evaluation of monitor results"
