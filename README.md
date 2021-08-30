@@ -8,13 +8,13 @@ A module for building Datadog monitors in Terraform
 | Name | Version |
 |------|---------|
 | terraform | >= 0.13 |
-| datadog | >= 2.20.0 |
+| datadog | >= 3.3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| datadog | >= 2.20.0 |
+| datadog | >= 3.3.0 |
 
 ## Inputs
 
@@ -24,7 +24,7 @@ A module for building Datadog monitors in Terraform
 | evaluation\_delay | Seconds to delay evaluation to ensure the monitor has a full data period | `number` | `null` | no |
 | include\_tags | Whether to insert the triggering tags into the monitoring title | `bool` | `true` | no |
 | monitors | The set of monitor specific attributes per monitor | <pre>map(object({<br>    name       = string<br>    message    = string<br>    query      = string<br>    thresholds = map(string)<br>    type       = string<br>  }))</pre> | `null` | no |
-| new\_host\_delay | Seconds after booting before starting the evaluation of monitor results | `number` | `null` | no |
+| new\_group\_delay | Seconds after booting before starting the evaluation of monitor results | `number` | `null` | no |
 | no\_data\_timeframe | The number of minutes before a monitor will notify when data stops reporting | `number` | `null` | no |
 | notifiers | The notifiers to which the alerts get send | `list(string)` | `[]` | no |
 | notify\_no\_data | Whether this monitor will notify when data stops reporting | `bool` | `true` | no |

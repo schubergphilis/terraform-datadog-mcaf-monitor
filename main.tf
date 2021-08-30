@@ -11,7 +11,7 @@ resource "datadog_monitor" "default" {
   query               = each.value.query
   evaluation_delay    = var.evaluation_delay
   include_tags        = var.include_tags
-  new_host_delay      = var.new_host_delay
+  new_group_delay     = var.new_group_delay
   no_data_timeframe   = var.no_data_timeframe
   notify_no_data      = var.notify_no_data
   renotify_interval   = var.renotify_interval
