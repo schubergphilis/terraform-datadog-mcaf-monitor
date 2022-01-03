@@ -11,8 +11,8 @@ resource "datadog_monitor" "default" {
   dynamic "monitor_threshold_windows" {
     for_each = each.value.monitor_threshold_windows != null ? { create : true } : {}
     content {
-      critical          = each.value.monitor_threshold_windows.critical
-      critical_recovery = each.value.monitor_threshold_windows.critical_recovery
+      trigger_window  = each.value.monitor_threshold_windows.trigger_window
+      recovery_window = each.value.monitor_threshold_windows.recovery_window
     }
   }
   query               = each.value.query
@@ -31,8 +31,6 @@ resource "datadog_monitor" "default" {
     for_each = each.value.thresholds != null ? { create : true } : {}
 
     content {
-      trigger_window    = try(each.value.thresholds["trigger_window"], null)
-      recovery_window   = try(each.value.thresholds["recovery_window"], null)
       ok                = try(each.value.thresholds["ok"], null)
       warning           = try(each.value.thresholds["warning"], null)
       critical          = try(each.value.thresholds["critical"], null)
