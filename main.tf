@@ -8,13 +8,7 @@ resource "datadog_monitor" "default" {
 
   name    = each.value.name
   message = format(local.message, each.value.message)
-  dynamic "monitor_threshold_windows" {
-    for_each = each.value.monitor_threshold_windows != null ? { create : true } : {}
-    content {
-      trigger_window  = each.value.monitor_threshold_windows.trigger_window
-      recovery_window = each.value.monitor_threshold_windows.recovery_window
-    }
-  }
+
   query               = each.value.query
   evaluation_delay    = var.evaluation_delay
   include_tags        = var.include_tags
@@ -27,6 +21,13 @@ resource "datadog_monitor" "default" {
   type                = each.value.type
   tags                = local.tags
 
+  dynamic "monitor_threshold_windows" {
+    for_each = each.value.monitor_threshold_windows != null ? { create : true } : {}
+    content {
+      trigger_window  = each.value.monitor_threshold_windows.trigger_window
+      recovery_window = each.value.monitor_threshold_windows.recovery_window
+    }
+  }
   dynamic "monitor_thresholds" {
     for_each = each.value.thresholds != null ? { create : true } : {}
 
@@ -39,4 +40,5 @@ resource "datadog_monitor" "default" {
       critical_recovery = try(each.value.thresholds["critical_recovery"], null)
     }
   }
+
 }
