@@ -6,19 +6,21 @@ locals {
 resource "datadog_monitor" "default" {
   for_each = var.monitors
 
-  name                = each.value.name
-  message             = format(local.message, each.value.message)
-  query               = each.value.query
-  evaluation_delay    = var.evaluation_delay
-  include_tags        = var.include_tags
-  new_group_delay     = var.new_group_delay
-  no_data_timeframe   = var.no_data_timeframe
-  notify_no_data      = var.notify_no_data
-  renotify_interval   = var.renotify_interval
-  require_full_window = var.require_full_window
-  timeout_h           = var.timeout
-  type                = each.value.type
-  tags                = local.tags
+  name                      = each.value.name
+  message                   = format(local.message, each.value.message)
+  monitor_threshold_windows = each.value.monitor_threshold_windows
+  monitor_thresholds        = each.value.monitor_thresholds
+  query                     = each.value.query
+  evaluation_delay          = var.evaluation_delay
+  include_tags              = var.include_tags
+  new_group_delay           = var.new_group_delay
+  no_data_timeframe         = var.no_data_timeframe
+  notify_no_data            = var.notify_no_data
+  renotify_interval         = var.renotify_interval
+  require_full_window       = var.require_full_window
+  timeout_h                 = var.timeout
+  type                      = each.value.type
+  tags                      = local.tags
 
   dynamic "monitor_thresholds" {
     for_each = each.value.thresholds != null ? { create : true } : {}
