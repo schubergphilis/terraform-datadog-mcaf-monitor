@@ -18,11 +18,15 @@ variable "include_tags" {
 
 variable "monitors" {
   type = map(object({
-    name       = string
     message    = string
+    name       = string
     query      = string
     thresholds = map(string)
-    type       = string
+    threshold_windows = object({
+      recovery_window = string
+      trigger_window  = string
+    })
+    type = string
   }))
   default     = null
   description = "The set of monitor specific attributes per monitor"
