@@ -23,7 +23,7 @@ A module for building Datadog monitors in Terraform
 | dashboard | The Datadog dashboard URL shown in the alert message | `string` | `""` | no |
 | evaluation\_delay | Seconds to delay evaluation to ensure the monitor has a full data period | `number` | `null` | no |
 | include\_tags | Whether to insert the triggering tags into the monitoring title | `bool` | `true` | no |
-| monitors | The set of monitor specific attributes per monitor | <pre>map(object({<br>    message = string<br>    threshold_windows = object({<br>      trigger_window  = string<br>      recovery_window = string<br>    })<br>    name       = string<br>    query      = string<br>    thresholds = map(string)<br>    type       = string<br>  }))</pre> | `null` | no |
+| monitors | The set of monitor specific attributes per monitor | <pre>map(object({<br>    message    = string<br>    name       = string<br>    query      = string<br>    thresholds = map(string)<br>    threshold_windows = object({<br>      recovery_window = string<br>      trigger_window  = string<br>    })<br>    type = string<br>  }))</pre> | `null` | no |
 | new\_group\_delay | Seconds after booting before starting the evaluation of monitor results | `number` | `null` | no |
 | no\_data\_timeframe | The number of minutes before a monitor will notify when data stops reporting | `number` | `null` | no |
 | notifiers | The notifiers to which the alerts get send | `list(string)` | `[]` | no |
