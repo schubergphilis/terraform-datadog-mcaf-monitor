@@ -21,11 +21,11 @@ resource "datadog_monitor" "default" {
   tags                = local.tags
 
   dynamic "monitor_threshold_windows" {
-    for_each = each.value.monitor_threshold_windows != null ? { create : true } : {}
+    for_each = each.value.threshold_windows != null ? { create : true } : {}
 
     content {
-      trigger_window  = each.value.monitor_threshold_windows.trigger_window
-      recovery_window = each.value.monitor_threshold_windows.recovery_window
+      trigger_window  = each.value.threshold_windows.trigger_window
+      recovery_window = each.value.threshold_windows.recovery_window
     }
   }
 
