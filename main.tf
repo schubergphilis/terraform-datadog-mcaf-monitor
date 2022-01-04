@@ -20,6 +20,15 @@ resource "datadog_monitor" "default" {
   type                = each.value.type
   tags                = local.tags
 
+  dynamic "monitor_threshold_windows" {
+    for_each = each.value.monitor_threshold_windows != null ? { create : true } : {}
+
+    content {
+      trigger_window  = each.value.monitor_threshold_windows.trigger_window
+      recovery_window = each.value.monitor_threshold_windows.recovery_window
+    }
+  }
+
   dynamic "monitor_thresholds" {
     for_each = each.value.thresholds != null ? { create : true } : {}
 

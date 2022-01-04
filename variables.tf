@@ -18,8 +18,12 @@ variable "include_tags" {
 
 variable "monitors" {
   type = map(object({
+    message = string
+    threshold_windows = object({
+      trigger_window  = string
+      recovery_window = string
+    })
     name       = string
-    message    = string
     query      = string
     thresholds = map(string)
     type       = string
