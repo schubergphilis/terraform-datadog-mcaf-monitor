@@ -85,3 +85,9 @@ variable "timeout" {
   default     = null
   description = "Hours of not reporting data before automatically resolving from a triggered state"
 }
+
+variable "priority" {
+  type        = number
+  default     = null
+  description = "Integer from 1 (high) to 5 (low) indicating alert severity"
+}

@@ -33,6 +33,7 @@ A module for building Datadog monitors in Terraform
 | tag\_list | A list of tags to assign to the role | `list(string)` | `[]` | no |
 | tag\_map | A map of tags to assign to the role | `map(string)` | `{}` | no |
 | timeout | Hours of not reporting data before automatically resolving from a triggered state | `number` | `null` | no |
+| priority | Integer from 1 (high) to 5 (low) indicating alert severity | `number` | `null` | no |
 
 ## Outputs
 

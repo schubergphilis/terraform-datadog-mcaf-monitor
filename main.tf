@@ -9,6 +9,7 @@ resource "datadog_monitor" "default" {
   name                = each.value.name
   message             = format(local.message, each.value.message)
   query               = each.value.query
+  priority            = var.priority
   evaluation_delay    = var.evaluation_delay
   include_tags        = var.include_tags
   new_group_delay     = var.new_group_delay
