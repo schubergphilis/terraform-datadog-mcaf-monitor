@@ -38,6 +38,12 @@ variable "new_group_delay" {
   description = "Seconds after booting before starting the evaluation of monitor results"
 }
 
+variable "no_data_timeframe" {
+  type        = number
+  default     = null
+  description = "The number of minutes before a monitor will notify when data stops reporting"
+}
+
 variable "notifiers" {
   type        = list(string)
   default     = []
@@ -50,10 +56,10 @@ variable "notify_no_data" {
   description = "Whether this monitor will notify when data stops reporting"
 }
 
-variable "no_data_timeframe" {
+variable "priority" {
   type        = number
   default     = null
-  description = "The number of minutes before a monitor will notify when data stops reporting"
+  description = "Integer from 1 (high) to 5 (low) indicating alert severity"
 }
 
 variable "renotify_interval" {
@@ -84,10 +90,4 @@ variable "timeout" {
   type        = number
   default     = null
   description = "Hours of not reporting data before automatically resolving from a triggered state"
-}
-
-variable "priority" {
-  type        = number
-  default     = null
-  description = "Integer from 1 (high) to 5 (low) indicating alert severity"
 }
