@@ -41,8 +41,8 @@ No modules.
 | <a name="input_priority"></a> [priority](#input\_priority) | Integer from 1 (high) to 5 (low) indicating alert severity | `number` | `null` | no |
 | <a name="input_renotify_interval"></a> [renotify\_interval](#input\_renotify\_interval) | The number of minutes before a monitor will re-notify on the current status | `number` | `null` | no |
 | <a name="input_require_full_window"></a> [require\_full\_window](#input\_require\_full\_window) | A boolean indicating whether the monitor needs a full window of data before it's evaluated | `bool` | `true` | no |
-| <a name="input_tag_list"></a> [tag\_list](#input\_tag\_list) | A list of tags to assign to the role | `list(string)` | `[]` | no |
-| <a name="input_tag_map"></a> [tag\_map](#input\_tag\_map) | A map of tags to assign to the role | `map(string)` | `{}` | no |
+| <a name="input_tag_list"></a> [tag\_list](#input\_tag\_list) | A list of tags to assign to the monitor | `list(string)` | `[]` | no |
+| <a name="input_tag_map"></a> [tag\_map](#input\_tag\_map) | A map of tags to assign to the monitor | `map(string)` | `{}` | no |
 | <a name="input_timeout"></a> [timeout](#input\_timeout) | Hours of not reporting data before automatically resolving from a triggered state | `number` | `null` | no |
 
 ## Outputs
