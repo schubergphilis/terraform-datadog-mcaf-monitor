@@ -71,13 +71,13 @@ variable "require_full_window" {
 variable "tag_list" {
   type        = list(string)
   default     = []
-  description = "A list of tags to assign to the role"
+  description = "A list of tags to assign to the monitor"
 }
 
 variable "tag_map" {
   type        = map(string)
   default     = {}
-  description = "A map of tags to assign to the role"
+  description = "A map of tags to assign to the monitor"
 }
 
 variable "timeout" {
