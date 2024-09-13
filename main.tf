@@ -8,16 +8,24 @@ resource "datadog_monitor" "default" {
 
   name                = each.value.name
   message             = format(local.message, each.value.message)
+  enable_logs_sample  = each.value.enable_logs_sample
+  escalation_message  = each.value.escalation_message
+  evaluation_delay    = each.value.evaluation_delay
+  force_delete        = each.value.force_delete
+  include_tags        = each.value.include_tags
+  locked              = each.value.locked
+  new_group_delay     = each.value.new_group_delay
+  new_host_delay      = each.value.new_host_delay
+  no_data_timeframe   = each.value.no_data_timeframe
+  notify_audit        = each.value.notify_audit
+  notify_no_data      = each.value.notify_no_data
+  priority            = each.value.priority
   query               = each.value.query
-  priority            = var.priority
-  evaluation_delay    = var.evaluation_delay
-  include_tags        = var.include_tags
-  new_group_delay     = var.new_group_delay
-  no_data_timeframe   = var.no_data_timeframe
-  notify_no_data      = var.notify_no_data
-  renotify_interval   = var.renotify_interval
-  require_full_window = var.require_full_window
-  timeout_h           = var.timeout
+  renotify_interval   = each.value.renotify_interval
+  require_full_window = each.value.require_full_window
+  threshold_windows   = each.value.threshold_windows
+  thresholds          = each.value.thresholds
+  timeout_h           = each.value.timeout
   type                = each.value.type
   tags                = local.tags
 
