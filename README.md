@@ -32,8 +32,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_dashboard"></a> [dashboard](#input\_dashboard) | The Datadog dashboard URL shown in the alert message | `string` | `""` | no |
 | <a name="input_evaluation_delay"></a> [evaluation\_delay](#input\_evaluation\_delay) | Seconds to delay evaluation to ensure the monitor has a full data period | `number` | `null` | no |
+| <a name="input_force_delete"></a> [force\_delete](#input\_force\_delete) | Whether to force delete the monitor when it is removed from the configuration | `bool` | `false` | no |
 | <a name="input_include_tags"></a> [include\_tags](#input\_include\_tags) | Whether to insert the triggering tags into the monitoring title | `bool` | `true` | no |
-| <a name="input_monitors"></a> [monitors](#input\_monitors) | The set of monitor specific attributes per monitor | <pre>map(object({<br>    message    = string<br>    name       = string<br>    query      = string<br>    thresholds = map(string)<br>    threshold_windows = object({<br>      recovery_window = string<br>      trigger_window  = string<br>    })<br>    type = string<br>  }))</pre> | `null` | no |
+| <a name="input_monitors"></a> [monitors](#input\_monitors) | The set of monitor specific attributes per monitor | <pre>map(object({<br/>    message    = string<br/>    name       = string<br/>    query      = string<br/>    thresholds = map(string)<br/>    threshold_windows = object({<br/>      recovery_window = string<br/>      trigger_window  = string<br/>    })<br/>    type = string<br/>  }))</pre> | `null` | no |
 | <a name="input_new_group_delay"></a> [new\_group\_delay](#input\_new\_group\_delay) | Seconds after booting before starting the evaluation of monitor results | `number` | `null` | no |
 | <a name="input_no_data_timeframe"></a> [no\_data\_timeframe](#input\_no\_data\_timeframe) | The number of minutes before a monitor will notify when data stops reporting | `number` | `null` | no |
 | <a name="input_notifiers"></a> [notifiers](#input\_notifiers) | The notifiers to which the alerts get send | `list(string)` | `[]` | no |
