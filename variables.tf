@@ -10,6 +10,12 @@ variable "evaluation_delay" {
   description = "Seconds to delay evaluation to ensure the monitor has a full data period"
 }
 
+variable "force_delete" {
+  type        = bool
+  default     = false
+  description = "Whether to force delete the monitor when it is removed from the configuration"
+}
+
 variable "include_tags" {
   type        = bool
   default     = true

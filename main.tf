@@ -11,6 +11,7 @@ resource "datadog_monitor" "default" {
   query               = each.value.query
   priority            = var.priority
   evaluation_delay    = var.evaluation_delay
+  force_delete        = var.force_delete
   include_tags        = var.include_tags
   new_group_delay     = var.new_group_delay
   no_data_timeframe   = var.no_data_timeframe
